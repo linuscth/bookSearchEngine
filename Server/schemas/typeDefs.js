@@ -21,11 +21,11 @@ const typeDefs = `
   }
 input BookInput {
     authors: [String]
-    description: String!
+    description: String
     bookId: String!
     image: String
     link: String
-    title: String!
+    title: String
 }
   type Query {
    Me: User
