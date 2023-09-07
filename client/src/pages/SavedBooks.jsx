@@ -26,7 +26,7 @@ const SavedBooks = () => {
                 if (!token) {
                     return false
                 }
-                if (!data.ok) {
+                if (!data) {
                     throw new Error('something went wrong!');
                 }
                 setUserData(data);
@@ -49,7 +49,7 @@ const SavedBooks = () => {
             setUserData(response);
             removeBookId(bookId)
         } catch (error) {
-            console.error(error);
+            console.error('error removing book:', error);
         }
     }
 

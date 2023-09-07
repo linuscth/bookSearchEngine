@@ -5,7 +5,7 @@ const resolvers = {
     Query: {
         Me: async (parents, args, context) => {
             if (context.user) {
-                return User.findOne({ _id: context.user._id }).populate('savedBooks')
+                return User.findOne({ _id: context.user._id })
             }
             throw AuthenticationError
         }
@@ -36,7 +36,7 @@ const resolvers = {
                     throw AuthenticationError
                 }
                 const user = await User.findOneAndUpdate({ _id: context.user._id }, {
-                    $addToSet: { savedBooks: bookInput }
+                    $addToSet: { savedBooks: BookInput }
                 }, { new: true, runValidators: true }
                 )
                 return user
