@@ -14,8 +14,8 @@ const SearchBooks = () => {
     const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds())
     const [saveBook, { error, data }] = useMutation(SAVE_BOOK)
     useEffect(() => {
-        return () => saveBookIds(savedBookIds)
-    })
+        return () => { saveBookIds(savedBookIds) }
+    }, [savedBookIds])
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log(searchInput);
