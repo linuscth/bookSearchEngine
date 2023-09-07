@@ -5,7 +5,7 @@ const resolvers = {
     Query: {
         Me: async (parents, args, context) => {
             if (context.user) {
-                return User.findOne({ _id: context.user._id })
+                return User.findOne({ _id: context.user._id }).populate('savedBooks')
             }
             throw AuthenticationError
         }
@@ -13,7 +13,7 @@ const resolvers = {
 
     Mutation: {
         login: async (parent, { email, password }) => {
-            const user = await User.findOne(email);
+            const user = await User.findOne({ email });
             if (!user) {
                 throw AuthenticationError
             }
@@ -39,7 +39,7 @@ const resolvers = {
                     $addToSet: { savedBooks: bookInput }
                 }, { new: true, runValidators: true }
                 )
-
+                return user
 
             } catch (error) {
                 console.log(error);
@@ -54,6 +54,7 @@ const resolvers = {
                 const user = await User.findOneAndUpdate({ _id: context.user._id }, {
                     $pull: { savedBooks: { bookId } }
                 }, { new: true })
+                return user
             } catch (error) {
                 console.log(error);
                 throw AuthenticationError
