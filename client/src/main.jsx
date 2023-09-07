@@ -3,23 +3,23 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import App from './App.jsx'
-// import SearchBooks from './pages/SearchBooks.jsx'
-// import SavedBooks from './pages/SavedBooks.jsx'
+import SearchBooks from './pages/SearchBooks.jsx'
+import SavedBooks from './pages/SavedBooks.jsx'
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <App />,
-        // errorElement: <h1 className='display-2'>Wrong page!</h1>,
-        // children: [
-        //     {
-        //         index: true,
-        //         element: <SearchBooks />
-        //     }, {
-        //         path: '/saved',
-        //         element: <SavedBooks />
-        //     }
-        // ]
+        errorElement: <h1 className='display-2'>Wrong page!</h1>,
+        children: [
+            {
+                index: true,
+                element: <SearchBooks />
+            }, {
+                path: '/saved',
+                element: <SavedBooks />
+            }
+        ]
     }
 ])
 
