@@ -9,7 +9,6 @@ const bookSchema = new Schema({
     ],
     description: {
         type: String,
-        required: true,
     },
     bookId: { 
         type: String,
@@ -23,7 +22,6 @@ const bookSchema = new Schema({
     },
     title: {
         type: String,
-        required: true,
     },
 });
 

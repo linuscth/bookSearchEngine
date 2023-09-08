@@ -32,11 +32,12 @@ const resolvers = {
         },
         saveBook: async (parent, { bookInput }, context) => {
             try {
+                console.log('In savebook mutation');
                 if (!context.user) {
                     throw AuthenticationError
                 }
                 const user = await User.findOneAndUpdate({ _id: context.user._id }, {
-                    $addToSet: { savedBooks: BookInput }
+                    $addToSet: { savedBooks: bookInput }
                 }, { new: true, runValidators: true }
                 )
                 return user
