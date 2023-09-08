@@ -16,7 +16,7 @@ const SearchBooks = () => {
     useEffect(() => {
         return () => { saveBookIds(savedBookIds) }
     }, [savedBookIds])
-    const handleFormSubmit = async (event) => {
+    const handleFormSubmit = async (event ) => {
         event.preventDefault();
         console.log(searchInput);
         if (!searchInput) {
@@ -53,7 +53,7 @@ const SearchBooks = () => {
         try {
             const { data } = await saveBook({
                 variables: {
-                    BookInput: { ...bookToSave },
+                    bookInput: { ...bookToSave },
                 }
             })
             console.log(data);
