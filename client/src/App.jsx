@@ -11,7 +11,7 @@ const httpLink = createHttpLink({
 const authLink = setContext((parent, { headers }) => {
   const token = localStorage.getItem('id_token');
   return {
-    header: {
+    headers: {
       ...headers,
       authorization: token ? `Bearer ${token}` : ''
     }
